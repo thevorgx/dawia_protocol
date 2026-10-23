@@ -20,7 +20,6 @@ def total_counter(pda_x, pda_y, pixel_distance, count):
     total_count = count - empty_slots
     return(total_count)
 
-
 def process():
 
     entries = state.entries

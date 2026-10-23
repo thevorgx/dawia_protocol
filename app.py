@@ -1,11 +1,11 @@
 from pynput.keyboard import Listener
-
 from dawia import state
 from dawia.actions import on_key_press
 from dawia.navigation import show_page
 from dawia.settings import load_settings
 from dawia.splash import show_splash
 from dawia.ui import build_ui
+
 
 
 def main():

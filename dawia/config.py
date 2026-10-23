@@ -17,4 +17,7 @@ FIELDS = [
     ("scroll_x", "X coordinate for scroll"),
     ("scroll_y", "Y coordinate for scroll"),
     ("pixel_distance", "the pixel distance"),
+    ("sac_x", "X coordinate for sac"),
+    ("sac_y", "Y coordinate for sac"),
+    ("sac_wait", "the wait time for sac"),
 ]

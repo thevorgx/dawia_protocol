@@ -5,7 +5,7 @@ from dawia import state
 from dawia.actions import choose_stop_key, start, stop
 from dawia.config import ACCENT, ACCENT_HOVER, BG
 from dawia.navigation import show_page
-from dawia.widgets import make_coords_row
+from dawia.widgets import make_coords_row, make_coords_wait_row
 
 
 def center_window(window, width, height):
@@ -166,3 +166,7 @@ def _fill_settings_page(page):
         border_width=1
     )
     entries["pixel_distance"].pack(pady=10)
+
+    entries["sac_x"], entries["sac_y"], entries["sac_wait"] = make_coords_wait_row(
+        page, "Sac Coordinates:", "sac x", "sac y", "sac wait time"
+    )
