@@ -10,7 +10,7 @@ def enter_ready():
         #rand_wait(0.08, 0.120)
         mouse_move(803, 126)
         sleep(0.02)
-        left_click
+        left_click()
         sleep(0.02)
         mouse_move(777, 395)#épée
         righ_click()

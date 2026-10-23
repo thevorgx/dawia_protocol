@@ -5,7 +5,7 @@ from dawia import state
 from dawia.actions import choose_stop_key, start, stop
 from dawia.config import ACCENT, ACCENT_HOVER, BG
 from dawia.navigation import show_page
-from dawia.widgets import make_coords_row, make_coords_wait_row
+from dawia.widgets import make_coords_row, make_coords_wait_row, make_region_wait_row, make_region_randwait_row
 
 
 def center_window(window, width, height):
@@ -25,7 +25,8 @@ def build_ui():
 
     app.configure(fg_color=BG)
     app.title("Dawia Quant")
-    center_window(app, 201, 413)
+    #center_window(app, 201, 413)
+    center_window(app, 201, 600)
     app.iconbitmap("assets/favicon.ico")
     ctk.set_appearance_mode("dark")
 
@@ -154,19 +155,10 @@ def _fill_settings_page(page):
         page, "mobs Coordinates:", "mobs x", "mobs y"
     )
 
-    entries["scroll_x"], entries["scroll_y"] = make_coords_row(
-        page, "Scroll Coordinates:", "scroll x", "scroll y"
+    entries["sac_x1"], entries["sac_y1"], entries["sac_x2"], entries["sac_y2"], entries["sac_wait"] = make_region_wait_row(
+        page, "Sac Coordinates:", "sac x1", "sac y1", "sac x2", "sac y2", "sac wait time"
     )
 
-    entries["pixel_distance"] = ctk.CTkEntry(
-        page,
-        placeholder_text="Pixel Distance",
-        fg_color=BG,
-        border_color=ACCENT,
-        border_width=1
-    )
-    entries["pixel_distance"].pack(pady=10)
-
-    entries["sac_x"], entries["sac_y"], entries["sac_wait"] = make_coords_wait_row(
-        page, "Sac Coordinates:", "sac x", "sac y", "sac wait time"
+    entries["pda_x1"], entries["pda_y1"], entries["pda_x2"], entries["pda_y2"], entries["pda_wait1"], entries["pda_wait2"] = make_region_randwait_row(
+        page, "Pda Coordinates:", "pda x1", "pda y1", "pda x2", "pda y2", "pda wait min", "pda wait max"
     )
