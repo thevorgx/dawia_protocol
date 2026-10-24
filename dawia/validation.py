@@ -1,19 +1,14 @@
-from dawia import state
-from dawia.config import FIELDS
-
+from math import isfinite
 
 from dawia import state
 from dawia.config import FIELDS
 
 
-def is_decimal_field(key):
-    return key.endswith("_min") or key.endswith("_max")
-
-
-def is_number(value, decimal):
-    if decimal:
-        return value.replace(".", "", 1).isdigit()  # allows 0.02
-    return value.isdigit()
+def is_number(value):
+    try:
+        return isfinite(float(value))
+    except ValueError:
+        return False
 
 
 def validate():
@@ -25,18 +20,26 @@ def validate():
             return f"Please enter {label}"
 
     for key, _ in FIELDS:
-        decimal = is_decimal_field(key)
-
-        if not is_number(values[key], decimal):
-            return f"{key} must be {'a number' if decimal else 'a whole number'}"
-
-    # every X_min must not be greater than its X_max
-    for key in values:
-        if key.endswith("_min"):
-            max_key = key[:-4] + "_max"
-
-            if max_key in values and float(values[key]) > float(values[max_key]):
-                return f"{key} must not be greater than {max_key}"
+        if not is_number(values[key]):
+            return f"{key} must be a number"
 
     if state.stop_key is None:
         return "Please choose a stop key"
+
+
+def fix_order():
+
+    for first, second, first_must_be_greater in state.pairs:
+        a = first.get().strip()
+        b = second.get().strip()
+
+        if first_must_be_greater:
+            out_of_order = float(a) < float(b)
+        else:
+            out_of_order = float(a) > float(b)
+
+        if out_of_order:
+            first.delete(0, "end")
+            first.insert(0, b)
+            second.delete(0, "end")
+            second.insert(0, a)
