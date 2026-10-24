@@ -24,7 +24,7 @@ def build_ui():
     state.app = app
 
     app.configure(fg_color=BG)
-    app.title("Dawia Quant")
+    app.title("Dawia Protocol")
     #center_window(app, 201, 413)
     center_window(app, 201, 600)
     app.iconbitmap("assets/favicon.ico")

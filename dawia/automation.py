@@ -19,16 +19,9 @@ def process():
 
     while state.running:
 
-        x = randint(x2, x1)  # x1 is the greater one
-        y = randint(y2, y1)  # y1 is the greater one
-
-        mouse_move(x, y)
-        sleep(0.02)
-        left_click()
-
+        x, y = random_click(x1, y1, x2, y2)
         click_number += 1
-        wait = uniform(wait_min, wait_max)
-        print(f"click {click_number}: ({x}, {y}) | wait {wait:.3f}s")
 
-        sleep(wait)
+        wait = random_wait(wait_min, wait_max)
+        print(f"click {click_number}: ({x}, {y}) | waited {wait:.3f}s")
 

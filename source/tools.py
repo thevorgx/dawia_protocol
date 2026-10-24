@@ -15,14 +15,33 @@ def righ_click():
     sleep(0.02)
     mouse_event(MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0)
 
-def rand_left_click(x1, y1, x2, y2):
+def random_click(x1, y1, x2, y2):
+
+    if x1 > x2:
+        x1, x2 = x2, x1
+
+    if y1 > y2:
+        y1, y2 = y2, y1
+
     x = randint(x1, x2)
     y = randint(y1, y2)
-    SetCursorPos((x, y))
-    sleep(0.08)
-    mouse_event(MOUSEEVENTF_LEFTDOWN, x, y)
+
+    mouse_move(x, y)
     sleep(0.02)
-    mouse_event(MOUSEEVENTF_LEFTUP, x, y)
+    left_click()
+
+    return x, y
+
+
+def random_wait(wait_min, wait_max):
+
+    if wait_min > wait_max:
+        wait_min, wait_max = wait_max, wait_min
+
+    wait = uniform(wait_min, wait_max)
+    sleep(wait)
+
+    return wait
 
 def mouse_move(x, y):
     SetCursorPos((x, y))

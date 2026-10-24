@@ -4,7 +4,7 @@ from dawia import state
 from dawia.automation import process
 from dawia.navigation import show_page
 from dawia.settings import save_settings
-from dawia.validation import validate, fix_order
+from dawia.validation import validate
 
 
 def start():
@@ -18,7 +18,6 @@ def start():
             show_page("settings")
         return
     
-    fix_order()
     save_settings()
 
     if not state.running:

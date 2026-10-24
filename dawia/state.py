@@ -11,4 +11,4 @@ status_label = None   # the label at the bottom of the window
 entries = {}          # "sword_x" -> CTkEntry, ...
 pages = {}            # "controls" / "settings" -> frame
 nav_buttons = {}      # "controls" / "settings" -> button
-pairs = []   # (first_entry, second_entry, first khass ykon greater than second)
+

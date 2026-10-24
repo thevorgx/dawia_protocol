@@ -1,6 +1,4 @@
 import customtkinter as ctk
-
-from dawia import state
 from dawia.config import ACCENT, ACCENT_HOVER, BG
 from dawia.picker import pick_coords, pick_region
 
@@ -294,9 +292,5 @@ def make_region_randwait_row(parent, title, x1, y1, x2, y2, time_min, time_max):
             x1_entry, y1_entry, x2_entry, y2_entry, title.rstrip(":")
         )
     ).pack(side="top", pady=(4, 0))
-
-    state.pairs.append((x1_entry, x2_entry, True))               # x1 must be greater than x2
-    state.pairs.append((y1_entry, y2_entry, True))               # y1 must be greater than y2
-    state.pairs.append((wait_entry_min, wait_entry_max, False))  # min must be smaller than max
 
     return x1_entry, y1_entry, x2_entry, y2_entry, wait_entry_min, wait_entry_max
